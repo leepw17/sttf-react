@@ -1,28 +1,34 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import CssBaseLine from '@material-ui/core/CssBaseline';
+import Layout from './components/main-layout/layout';
+import { withStyles } from '@material-ui/core/styles';
 
-class App extends Component {
+const styles = theme => ({
+  root: {
+    display: 'flex'
+  },
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing.unit * 3,
+  },
+  toolbar: theme.mixins.toolbar,
+})
+
+class App extends React.Component {
+
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+    const { classes, theme } = this.props;
+
+     return(
+      <div className={classes.root}>
+        <Layout />
+        <main className={classes.content}>
+          <div className={classes.toolbar} />
+          Testing 123
+        </main>
       </div>
     );
   }
 }
 
-export default App;
+export default withStyles(styles)(App);
